@@ -32,17 +32,5 @@ public class AdminPageView {
         window.add(blogout);
         scrollPane.setBounds(20, 35, 500, 300);
         blogout.setBounds(20, 350, 100,50);
-        
-        showData();
-        
     }
-    
-    private void showData(){
-        
-    }
-
-    public void updateStatus(String string, String string0, String string1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

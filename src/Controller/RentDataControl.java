@@ -11,8 +11,8 @@ import View.RenterDataView;
 import View.LoginPageView;
 
 public class RentDataControl {
-    RenterDataView rentView = new RenterDataView();
-    modelMaul model = new modelMaul();
+    RenterDataView rentView;
+    modelMaul model;
     String room;
     
     public RentDataControl(RenterDataView rentView, modelMaul model, String room){

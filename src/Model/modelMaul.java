@@ -73,26 +73,26 @@ public class modelMaul extends Connector implements priceInterface{
         try{
             String query = "DELETE FROM renter WHERE id='"+id+"' ";
             stmt = connection.createStatement();
-            stmt.executeQuery(query);
+            stmt.executeUpdate(query);
             String queryUp = "UPDATE rooms SET status='empty' WHERE name='"+room+"' ";
             stmt = connection.createStatement();
-            stmt.executeQuery(queryUp);
+            stmt.executeUpdate(queryUp);
             JOptionPane.showMessageDialog(null, "Data Deleted!");
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Failed to Delete Data!");
+            JOptionPane.showMessageDialog(null, "Failed to Delete Data!"+e);
         }
     }
     
     public void insertRent(String name, String id, String contact, int duration, String room){
         try{
-            String query = "SELECT * FROM renter VALUES ('"+name+"', '"+id+"', '"+contact+"', '"+duration*getPrice(room)+"', 'notPaid', '"+room+"')";
+            String query = "INSERT INTO renter VALUES ('"+name+"', '"+id+"', '"+contact+"', '"+duration+"','"+duration*getPrice(room)+"', 'notPaid', '"+room+"')";
             stmt = connection.createStatement();
             stmt.executeUpdate(query);
             JOptionPane.showMessageDialog(null, "Booking Success!");
         }
         catch(HeadlessException | SQLException e){
-            JOptionPane.showMessageDialog(null, "Booking Failed!");
+            JOptionPane.showMessageDialog(null, "Booking Failed! "+e);
         }
     }
     
@@ -161,5 +161,20 @@ public class modelMaul extends Connector implements priceInterface{
             JOptionPane.showMessageDialog(null, "Unable to read data!");
         }
         return data;
+    }
+    
+    public void updateStatus(String name, String ID, String room){
+        try{
+            String query = "UPDATE renter SET status='Paid' WHERE id='"+ID+"' ";
+            stmt = connection.createStatement();
+            stmt.executeQuery(query);
+            String query1 = "UPDATE rooms SET status='"+name+"' WHERE name='"+room+"' ";
+            stmt = connection.createStatement();
+            stmt.executeUpdate(query);
+            JOptionPane.showMessageDialog(null, "Update Success!");
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Update Failed!"+e);
+        }
     }
 }

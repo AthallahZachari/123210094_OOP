@@ -19,8 +19,8 @@ import Controller.RentEditControl;
 import Controller.LogControl;
 
 public class AdminControl {
-    AdminPageView admView = new AdminPageView();
-    modelMaul model = new modelMaul();
+    AdminPageView admView;
+    modelMaul model;
     String[][] data;
     int row;
     
@@ -76,6 +76,5 @@ public class AdminControl {
             
         };
         admView.tabel.setModel(tableModel);
-        
     }
 }
